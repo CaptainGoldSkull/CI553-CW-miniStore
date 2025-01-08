@@ -1,7 +1,9 @@
 package clients.cashier;
 
 import catalogue.Basket;
+import catalogue.BetterBasket;
 import catalogue.Product;
+import clients.customer.SearchName;
 import debug.DEBUG;
 import middle.*;
 
@@ -54,12 +56,17 @@ public class CashierModel extends Observable
    * Check if the product is in Stock
    * @param productNum The product number
    */
-  public void doCheck(String productNum )
+  public void doCheck(String productNum, String quant )
   {
     String theAction = "";
     theState  = State.process;                  // State process
     pn  = productNum.trim();                    // Product no.
     int    amount  = 1;                         //  & quantity
+    try {
+		amount = Integer.parseInt(quant);
+	} catch(NumberFormatException e){
+		theAction = "Quantity isnt a number " + quant;       //  product no.
+	}
     try
     {
       if ( theStock.exists( pn ) )              // Stock Exists?
@@ -98,7 +105,7 @@ public class CashierModel extends Observable
   public void doBuy()
   {
     String theAction = "";
-    int    amount  = 1;                         //  & quantity
+    int    amount  = 1;
     try
     {
       if ( theState != State.checked )          // Not checked
@@ -192,7 +199,7 @@ public class CashierModel extends Observable
    */
   protected Basket makeBasket()
   {
-    return new Basket();
+    return new BetterBasket();
   }
 }
   

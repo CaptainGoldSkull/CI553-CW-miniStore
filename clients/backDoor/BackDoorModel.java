@@ -62,8 +62,10 @@ public class BackDoorModel extends Observable
    */
   public void doQuery(String productNum )
   {
+	//System.out.println("Running the doquery model");
     String theAction = "";
     pn  = productNum.trim();                    // Product no.
+    theBasket = makeBasket();
     try
     {                 //  & quantity
       if ( theStock.exists( pn ) )              // Stock Exists?
@@ -74,6 +76,7 @@ public class BackDoorModel extends Observable
           pr.getDescription(),                  //    description
           pr.getPrice(),                        //    price
           pr.getQuantity() );                   //    quantity
+        theBasket.add(pr);
       } else {                                  //  F
         theAction =                             //   Inform
           "Unknown product number " + pn;       //  product number

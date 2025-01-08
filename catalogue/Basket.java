@@ -13,7 +13,7 @@ import java.util.Locale;
  * @version 2.2
  *
  */
-public class Basket extends ArrayList<Product> implements Serializable
+public class Basket extends ArrayList<Product>
 {
   private static final long serialVersionUID = 1;
   private int    theOrderNum = 0;          // Order number
@@ -55,7 +55,7 @@ public class Basket extends ArrayList<Product> implements Serializable
    */
   // Will be in the Java doc for Basket
   @Override
-  public boolean add( Product pr )
+  public boolean add( Product pr)
   {                              
     return super.add( pr );     // Call add in ArrayList
   }

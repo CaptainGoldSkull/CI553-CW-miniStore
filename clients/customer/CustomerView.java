@@ -21,6 +21,7 @@ public class CustomerView implements Observer
   {
     public static final String CHECK  = "Check";
     public static final String CLEAR  = "Clear";
+    public static final String CHECKOUT  = "Place";
   }
 
   private static final int H = 300;       // Height of window pixels
@@ -34,13 +35,14 @@ public class CustomerView implements Observer
   private final JButton     theBtCheck = new JButton( Name.CHECK );
   private final JButton     theBtClear = new JButton( Name.CLEAR );
 
+
   private Picture thePicture = new Picture(80,80);
   private StockReader theStock   = null;
   private CustomerController cont= null;
 
   /**
    * Construct the view
-   * @param rpc   Window in which to construct
+   * @param rpc   Window in which to construct160
    * @param mf    Factor to deliver order and stock objects
    * @param x     x-cordinate of position of window on screen 
    * @param y     y-cordinate of position of window on screen  
@@ -63,35 +65,41 @@ public class CustomerView implements Observer
 
     Font f = new Font("Monospaced",Font.PLAIN,12);  // Font f is
     
-    pageTitle.setBounds( 110, 0 , 270, 20 );       
+    pageTitle.setBounds( 200, 0 , 270, 20 );       
     pageTitle.setText( "Search products" );                        
     cp.add( pageTitle );
-
-    theBtCheck.setBounds( 16, 25+60*0, 80, 40 );    // Check button
+    
+    theBtCheck.setBounds( 16, 100, 80, 40 );    // Check button
     theBtCheck.addActionListener(                   // Call back code
       e -> cont.doCheck( theInput.getText() ) );
     cp.add( theBtCheck );                           //  Add to canvas
 
-    theBtClear.setBounds( 16, 25+60*1, 80, 40 );    // Clear button
+    theBtClear.setBounds( 16, 100 + 60, 80, 40 );    // Clear button
     theBtClear.addActionListener(                   // Call back code
       e -> cont.doClear() );
     cp.add( theBtClear );                           //  Add to canvas
 
-    theAction.setBounds( 110, 25 , 270, 20 );       // Message area
-    theAction.setText( " " );                       // blank
-    cp.add( theAction );                            //  Add to canvas
 
-    theInput.setBounds( 110, 50, 270, 40 );         // Product no area
+    theInput.setBounds( 200, 50, 180, 40 );         // Product no area
     theInput.setText("");                           // Blank
     cp.add( theInput );                             //  Add to canvas
     
+    theAction.setBounds( 200, 25 , 270, 20 );       // Message area
+    theAction.setText( " " );                       // blank
+    cp.add( theAction );                            //  Add to canvas
+
+    							//270
+    theInput.setBounds( 200, 50, 180, 40 );         // Product no area
+    theInput.setText("");                           // Blank
+    cp.add( theInput );                             //  Add to canvas
+
     theSP.setBounds( 110, 100, 270, 160 );          // Scrolling pane
     theOutput.setText( "" );                        //  Blank
     theOutput.setFont( f );                         //  Uses font  
     cp.add( theSP );                                //  Add to canvas
     theSP.getViewport().add( theOutput );           //  In TextArea
-
-    thePicture.setBounds( 16, 25+60*2, 80, 80 );   // Picture area
+    						//25+60*2
+    thePicture.setBounds( 110, 16, 80, 80 );   // Picture area
     cp.add( thePicture );                           //  Add to canvas
     thePicture.clear();
     
