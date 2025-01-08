@@ -1,5 +1,6 @@
 package clients.backDoor;
 
+import clients.customer.SearchName;
 
 /**
  * The BackDoor Controller
@@ -26,9 +27,19 @@ public class BackDoorController
    */
   public void doQuery( String pn )
   {
-    model.doQuery(pn);
+	  if (pn.length() > 1) {
+		  try {
+			  Integer.parseInt(pn);
+		  } catch(NumberFormatException e){
+			  SearchName nameSearch = new SearchName();
+			  pn = nameSearch.getNumFromName(nameSearch,pn);
+		  }
+		  if (pn != null) {
+			  model.doQuery(pn);
+		  }  
+	  }
   }
-  
+ 
   /**
    * RStock interaction from view
    * @param pn       The product number to be re-stocked
@@ -36,7 +47,19 @@ public class BackDoorController
    */
   public void doRStock( String pn, String quantity )
   {
-    model.doRStock(pn, quantity);
+	  if (pn != " ") {
+		  try {
+			  Integer.parseInt(pn);
+		  } catch(NumberFormatException e){
+			  SearchName nameSearch = new SearchName();
+			  pn = nameSearch.getNumFromName(nameSearch,pn);
+		  }
+		  if (pn != null) {
+			  //model.doCheck(pn);
+			  model.doRStock(pn, quantity);
+		  }
+	  }
+    
   }
 
   /**

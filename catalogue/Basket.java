@@ -55,7 +55,7 @@ public class Basket extends ArrayList<Product>
    */
   // Will be in the Java doc for Basket
   @Override
-  public boolean add( Product pr )
+  public boolean add( Product pr)
   {                              
     return super.add( pr );     // Call add in ArrayList
   }

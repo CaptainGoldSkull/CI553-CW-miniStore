@@ -27,15 +27,18 @@ public class CustomerController
    */
   public void doCheck( String pn )
   {
-	try {
-		Integer.parseInt(pn);
-	} catch(NumberFormatException e){
-		  SearchName nameSearch = new SearchName();
-		  pn = nameSearch.getNumFromName(nameSearch,pn);
-	}
-    if (pn != null) {
-    	model.doCheck(pn);
-    }
+	  if (pn.length() > 1) {
+		  try {
+				Integer.parseInt(pn);
+			} catch(NumberFormatException e){
+				  SearchName nameSearch = new SearchName();
+				  pn = nameSearch.getNumFromName(nameSearch,pn);
+			}
+		    if (pn != null) {
+		    	model.doCheck(pn);
+		    }
+	  }
+	
   }
 
   //public void doCheckByName(String name) {
