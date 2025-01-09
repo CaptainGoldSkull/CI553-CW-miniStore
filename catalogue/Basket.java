@@ -45,21 +45,6 @@ public class Basket extends ArrayList<Product>
   {
     return theOrderNum;
   }
-  
-  /**
-   * Add a product to the Basket.
-   * Product is appended to the end of the existing products
-   * in the basket.
-   * @param pr A product to be added to the basket
-   * @return true if successfully adds the product
-   */
-  // Will be in the Java doc for Basket
-  @Override
-  public boolean add( Product pr )
-  {                              
-    return super.add( pr );     // Call add in ArrayList
-  }
-
   /**
    * Returns a description of the products in the basket suitable for printing.
    * @return a string description of the basket products

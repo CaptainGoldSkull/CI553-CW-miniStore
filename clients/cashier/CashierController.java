@@ -35,7 +35,7 @@ public class CashierController
 		  pn = nameSearch.getNumFromName(pn);
 	}
     if (pn != null) {
-    	model.doCheck(pn);
+    	model.doCheck(pn,"1");
     }
  }
 
