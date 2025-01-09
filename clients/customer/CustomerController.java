@@ -1,6 +1,8 @@
 package clients.customer;
 import java.util.Map;
 
+import clients.SearchName;
+
 /**
  * The Customer Controller
  */
@@ -31,7 +33,7 @@ public class CustomerController
 		Integer.parseInt(pn);
 	} catch(NumberFormatException e){
 		  SearchName nameSearch = new SearchName();
-		  pn = nameSearch.getNumFromName(nameSearch,pn);
+		  pn = nameSearch.getNumFromName(pn);
 	}
     if (pn != null) {
     	model.doCheck(pn);
