@@ -30,12 +30,17 @@ public class CashierController
   {
 	  if (pn.length() > 1) {
 		  try {
-			  Integer.parseInt(pn);
-			} catch(NumberFormatException e){
+			  Integer.parseInt(pn); // try and parse the pn input as a number, throws an exception if it cant
+			} catch(NumberFormatException e){ // if the above line doesnt work it is a string so try and run the searchName method on it
 				SearchName nameSearch = new SearchName();
 				pn = nameSearch.getNumFromName(nameSearch,pn);
 			}
-		  if (pn != null) {
+		  try { 
+			  Integer.parseInt(Quant); // Check if the quantity string is already a number e.g "1"
+		  } catch(NumberFormatException e) { // if an exception above is thrown then the input isnt an integer so just add 1
+			  Quant = "1";
+		  }
+		  if (pn != null) { // if it did find a product number
 			  model.doCheck(pn, Quant);  
 		  }
 	  }
@@ -48,11 +53,6 @@ public class CashierController
    */
   public void doBuy(String quant)
   {
-	  //try {
-	//	  model.doBuy(Integer.parseInt(quant));
-	//	} catch(NumberFormatException e){
-	//		model.doBuy(1);
-	//	}
 	  model.doBuy();
 
     
