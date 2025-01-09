@@ -100,12 +100,12 @@ public class CashierView implements Observer
     rootWindow.setVisible( true );                  // Make visible
     theInput.requestFocus();                        // Focus is here
     
-    quantityTitle.setBounds( 16, 10 , 270, 20 );       
+    quantityTitle.setBounds( 26, 25 , 270, 20 );       
     quantityTitle.setText( "Quantity:" );                        
     cp.add( quantityTitle );
     
     //quantInput.setBounds( 32, 40, 40, 40 );         // Product no area
-    quantInput.setBounds( 80,10, 20, 20 );
+    quantInput.setBounds( 36,50, 40, 40);
     quantInput.setText("1");                           // Blank
     cp.add( quantInput );                             //  Add to canvas
 
