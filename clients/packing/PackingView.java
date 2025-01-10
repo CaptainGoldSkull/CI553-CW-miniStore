@@ -118,8 +118,7 @@ public class PackingView implements Observer
 	    Collections.sort(waitingOrders);
 		for (Integer entry : waitingOrders){
 
-			if (entry != null)
-				System.out.println(entry);
+			if (entry != null);
 				JButton orderButton = new JButton();
 				orderButton.setText(entry.toString());
 				orderButton.setAlignmentX(Component.CENTER_ALIGNMENT);

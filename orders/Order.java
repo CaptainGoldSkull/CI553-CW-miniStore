@@ -218,7 +218,7 @@ public class Order implements OrderProcessing
   }
 
 
-public synchronized List<Integer> getWaitingOrders()
+public List<Integer> getWaitingOrders()
 		throws OrderException
 	{
 	  List<Integer> toRet = new ArrayList<>();
@@ -231,26 +231,12 @@ public synchronized List<Integer> getWaitingOrders()
 public Basket getSpecificOrder(int orderNum) throws OrderException {
 	orderNum -= 1; // The folders start at 0
 	DEBUG.trace( "DEBUG: Get specific order to pack" );
-	System.out.println("Getting specific order.. " + orderNum + " I also got " + folders.get(orderNum -1).getBasket().getOrderNum());
 	Basket foundWaiting = null;
 	foundWaiting = folders.get(orderNum).getBasket();
 	if ( foundWaiting != null) {
 		folders.get(orderNum).newState( State.BeingPacked );
 		return foundWaiting;
 	}
-	
-	//   Basket foundWaiting = null;
-	//   for ( int i=0; i < folders.size(); i++)
-	//    {
-	//     if ( folders.get(i).getBasket().getOrderNum() == orderNum)
-	//     {
-	//    	 System.out.println("Checking basket "+ folders.get(i).getBasket().getOrderNum() + " orderNum is "+ orderNum + "Does it match? " + (folders.get(i).getBasket().getOrderNum() == orderNum));
-	//    	 foundWaiting = folders.get(i).getBasket();
-	//    	 System.out.println("Found folder with matching ordernum.. basket order is " + foundWaiting.getOrderNum() + " Checking " + orderNum);
-	//    	 folders.get(orderNum).newState( State.BeingPacked );
-	//	     break;
-	 //    }
-	 //  }
 	 return null;
 }
 
