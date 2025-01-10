@@ -1,6 +1,6 @@
 package clients.backDoor;
 
-import clients.customer.SearchName;
+import clients.SearchName;
 
 /**
  * The BackDoor Controller

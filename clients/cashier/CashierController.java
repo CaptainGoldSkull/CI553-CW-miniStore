@@ -1,6 +1,6 @@
 package clients.cashier;
 
-import clients.customer.SearchName;
+import clients.SearchName;
 
 /**
  * The Cashier Controller

@@ -1,5 +1,6 @@
 package clients.customer;
 import java.util.Map;
+import clients.SearchName;
 
 /**
  * The Customer Controller
