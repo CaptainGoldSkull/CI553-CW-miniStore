@@ -30,6 +30,5 @@ public interface RemoteOrder_I extends Remote
          throws  RemoteException, OrderException;
   public List<Integer> getWaitingOrders()
 	throws  RemoteException, OrderException;
-  public Basket getSpecificOrder() throws RemoteException,OrderException;
 }
 

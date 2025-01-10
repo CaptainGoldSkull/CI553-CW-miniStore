@@ -193,15 +193,14 @@ public class OrderX implements OrderProcessing
 
 @Override
 public List<Integer> getWaitingOrders() throws OrderException {
-	// TODO Auto-generated method stub
-	return null;
+	return null; // not currently using
 }
 
-
 @Override
-public Basket getSpecificOrder(int orderNum) throws OrderException {
-	// TODO Auto-generated method stub
+public Basket getSpecificOrder(int productNum) {
+	System.out.println("In orderX");
 	return null;
+	
 }
 
 }

@@ -1,6 +1,7 @@
 package clients.packing;
 
 import catalogue.Basket;
+import java.util.Collections; // Import for sorting
 import middle.MiddleFactory;
 import middle.OrderException;
 import middle.OrderProcessing;
@@ -12,6 +13,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Observer;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 /**
  * Implements the Packing view.
@@ -32,6 +35,7 @@ public class PackingView implements Observer
   private final JButton     theBtPack= new JButton( PACKED );
   private final JScrollPane ordersScroll      = new JScrollPane();
   private final JPanel   	ordersContainer  = new 	JPanel();
+  
   
  
   private OrderProcessing theOrder     = null;
@@ -83,11 +87,11 @@ public class PackingView implements Observer
     rootWindow.setVisible( true );                  // Make visible
     
     ordersScroll.setBounds( 16, 80, 100, 180 );           // Scrolling pane
-    //ordersContainer.setText( "" );                        //  Blank
-    //ordersContainer.setFont( f );                         //  Uses font  
     cp.add( ordersScroll );                                //  Add to canvas
     ordersScroll.getViewport().add( ordersContainer );           //  In TextArea
     rootWindow.setVisible( true );                  // Make visible
+    ordersContainer.setLayout(new BoxLayout(ordersContainer, BoxLayout.Y_AXIS));
+    
   }
   
   public void setController( PackingController c )
@@ -103,30 +107,37 @@ public class PackingView implements Observer
   @Override
   public void update( Observable modelC, Object arg )
   {
-	  PackingModel model  = (PackingModel) modelC;
+	PackingModel model  = (PackingModel) modelC;
     String        message = (String) arg;
     theAction.setText( message );
     
     Basket basket =  model.getBasket();
-    try {
-    	ordersContainer.removeAll();
-		for (Integer entry : model.getWaiting()){
-			
+    ordersContainer.removeAll();
+	try {
+		List<Integer> waitingOrders = model.getWaiting();
+	    Collections.sort(waitingOrders);
+		for (Integer entry : waitingOrders){
+
 			if (entry != null)
-			System.out.println(entry);
-			JButton orderButton = new JButton();
-			orderButton.setText(entry.toString());
-			orderButton.addActionListener(e -> {
-				
-			});
-			ordersContainer.add(orderButton);
-			ordersContainer.revalidate();
-		    ordersContainer.repaint();
+				System.out.println(entry);
+				JButton orderButton = new JButton();
+				orderButton.setText(entry.toString());
+				orderButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+				orderButton.addActionListener(e -> {
+					try {
+						model.setSpecificOrder(Integer.parseInt(orderButton.getText()));
+					} catch (NumberFormatException e1) {
+						e1.printStackTrace();
+				}});
+				ordersContainer.add(orderButton);
+				ordersContainer.revalidate();
+			    ordersContainer.repaint();
+			}
+		} catch (OrderException e) {
+			e.printStackTrace();
 		}
 		
-    } catch (OrderException e) {
-		e.printStackTrace();
-	}
+
     
     if ( basket != null )
     {

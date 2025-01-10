@@ -172,17 +172,13 @@ public class F_Order implements OrderProcessing
        
   }
 
-    public Basket getSpecificOrder(int orderNum) throws OrderException {
-		try
-	   {
-	    if ( aR_Order == null ) connect();
-	    	return aR_Order.getSpecificOrder();
-	    } catch ( Exception e )
-	    {
-	      aR_Order = null;
-	      throw new OrderException( "Net: " + e.getMessage() );
-	    }
+	@Override
+	public Basket getSpecificOrder(int productNum) {
+		return null;
+		
 	}
+
+    
 
 	
 }
