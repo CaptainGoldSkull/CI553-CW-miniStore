@@ -73,10 +73,4 @@ public List<Integer> getWaitingOrders() throws RemoteException, OrderException {
 	return null;
 }
 
-@Override
-public Basket getSpecificOrder() throws RemoteException, OrderException {
-	// TODO Auto-generated method stub
-	return null;
-}
-
 }

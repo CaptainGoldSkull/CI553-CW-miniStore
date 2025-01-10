@@ -127,9 +127,6 @@ public class PackingModel extends Observable
     return theBasket.get();
   }
 
-  /**
-   * Process a packed Order
-   */
   public void doPacked()
   {
     String theAction = "";
@@ -155,6 +152,20 @@ public class PackingModel extends Observable
     }
     setChanged(); notifyObservers(theAction);
   }
+  public void setSpecificOrder(int productNum) {
+	  try {
+		  theAction = "GettingSpecific";
+		  Basket newBasket = new Basket();
+		  newBasket = theOrder.getSpecificOrder(productNum);
+		  theBasket.set( null );
+		  System.out.println("Checking product num got" + newBasket.getOrderNum());
+		  theBasket.set(newBasket);
+		  setChanged(); notifyObservers(theAction);
+	} catch (OrderException e) {
+		e.printStackTrace();
+	}
+  }
+  
 }
 
 

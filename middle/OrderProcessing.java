@@ -37,7 +37,8 @@ public interface OrderProcessing
   public List<Integer> getWaitingOrders() // Display
 	         throws OrderException;
 
-  public Basket getSpecificOrder(int orderNum) throws OrderException;
+public Basket getSpecificOrder(int int1) throws OrderException;
+
 
 }
 
